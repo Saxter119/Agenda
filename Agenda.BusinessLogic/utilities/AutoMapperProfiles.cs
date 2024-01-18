@@ -1,5 +1,6 @@
 ﻿using Agenda.BusinessLogic.dtos;
 using Agenda.BusinessLogic.entities;
+using Agenda.DataAccess.entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,11 @@ namespace Agenda.BusinessLogic.services
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Contact, ContactDto>();
-            CreateMap<ContactDto, Contact>();
+            CreateMap<Phone, PhoneDto>()
+            .ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Number));
+
+            CreateMap<Email, EmailDto>()
+            .ForMember(dest => dest.EmailContact, opt => opt.MapFrom(src => src.EmailAddress));
         }
 
     }

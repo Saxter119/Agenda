@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Agenda.BusinessLogic.dtos
 {
-    public class EmailDto
+    public class ContactUpdateDto : ContactCreationDto
     {
-        public int? Id { get; set; }
-        public string EmailContact { get; set; }
+        public int Id { get; set; }
     }
 }

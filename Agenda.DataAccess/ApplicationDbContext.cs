@@ -9,6 +9,7 @@ namespace Agenda.Presentation.Controllers
     {
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Email> Emails { get; set; }
+        public DbSet<Phone> Phones { get; set; }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -18,7 +19,7 @@ namespace Agenda.Presentation.Controllers
             modelBuilder.Entity<Contact>()
                 .HasMany(e => e.Phones)
                 .WithOne(e => e.Contact)
-                .HasForeignKey("usuarioId")
+                .HasForeignKey("usuarioId") 
                 .IsRequired();
 
             modelBuilder.Entity<Contact>()

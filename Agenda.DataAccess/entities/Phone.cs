@@ -14,7 +14,6 @@ namespace Agenda.DataAccess.entities
         public int Id { get; set; }
         [Column("telefono")]
         public string Number { get; set; }
-        [Column("personaId")]
         public virtual Contact Contact { get; set; }
         //public int ContactId { get; set; }
     }

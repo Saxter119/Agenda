@@ -8,6 +8,7 @@ namespace Agenda.BusinessLogic.dtos
 {
     public class PhoneDto
     {
-        public string Number { get; set; }
+        public int? Id { get; set; }
+        public string Number { get; set;    }  
     }
 }

@@ -9,12 +9,13 @@ namespace Agenda.BusinessLogic.dtos
 {
     public class ContactDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string NationalId { get; set; }
         public string Direction { get; set; }
-        public List<EmailDto> Email { get; set; }
-        public List<PhoneDto> Phone { get; set; }
+        public List<EmailDto> Emails { get; set; }
+        public List<PhoneDto> Phones { get; set; }
 
     }
 }

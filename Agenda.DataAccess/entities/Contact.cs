@@ -21,6 +21,8 @@ namespace Agenda.BusinessLogic.entities
         public string NationalId { get; set; }
         [Column("direccion")]
         public string Direction { get; set; }
+        [Column("eliminado")]
+        public bool? Deleted { get; set; }
 
         public virtual ICollection<Email> Emails { get; set; }
         public virtual ICollection<Phone> Phones { get; set; }

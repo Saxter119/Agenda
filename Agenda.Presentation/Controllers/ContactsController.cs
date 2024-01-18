@@ -35,6 +35,27 @@ namespace Agenda.Presentation.Controllers
 
         }
 
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+
+            try
+            {
+                var contactDto = await contactService.GetContactById(id);
+
+                return Ok(contactDto);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Post(ContactCreationDto contactCreationDto)
         {
@@ -42,12 +63,75 @@ namespace Agenda.Presentation.Controllers
             {
                 await contactService.CreateContact(contactCreationDto);
 
-                return Ok(new { message = "Contact created" } );
+                return Ok(new { message = "Contact created!" });
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             };
+        }
+
+        [HttpPut]
+        [Route("updateContact")]
+        public async Task<IActionResult> Update(ContactUpdateDto contactUpdateDto)
+        {
+            try
+            {
+                await contactService.UpdateContact(contactUpdateDto);
+
+                return Ok(new { message = "Contact updated!" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("deleteEmail/{id}")]
+        public async Task<IActionResult> DeleteEmail(int id)
+        {
+            try
+            {
+                await contactService.DeleteEmailById(id);
+
+                return Ok(new { message = "email deleted!" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("deletePhone/{id}")]
+        public async Task<IActionResult> DeletePhone(int id)
+        {
+            try
+            {
+                await contactService.DeletePhoneById(id);
+
+                return Ok(new { message = "phone deleted!" });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("deleteContact/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await contactService.DeleteContact(id);
+
+                return Ok("contact deleted");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }
