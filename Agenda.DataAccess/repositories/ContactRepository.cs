@@ -37,7 +37,7 @@ namespace Agenda.DataAccess.repositories
 
         public async Task<List<Contact>> GetAll()
         {
-            return await _dbContext.Contacts.Where(contact=> contact.Deleted != true)
+            return await _dbContext.Contacts.Where(contact=> contact.Deleted != "true")
                                   .Include(x => x.Emails)
                                   .Include(x => x.Phones)
                                   .ToListAsync();

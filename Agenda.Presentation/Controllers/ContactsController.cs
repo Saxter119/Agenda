@@ -1,6 +1,7 @@
 ﻿using Agenda.BusinessLogic.dtos;
 using Agenda.BusinessLogic.services;
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Presentation.Controllers
@@ -22,6 +23,7 @@ namespace Agenda.Presentation.Controllers
 
             try
             {
+
                 var contactsDto = await contactService.GetContactsDto();
 
                 return Ok(contactsDto);
@@ -125,7 +127,7 @@ namespace Agenda.Presentation.Controllers
             {
                 await contactService.DeleteContact(id);
 
-                return Ok("contact deleted");
+                return Ok(new { message = "contact deleted!" });
             }
             catch (Exception)
             {

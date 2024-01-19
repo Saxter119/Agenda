@@ -2,12 +2,27 @@ using Agenda.BusinessLogic.services;
 using Agenda.DataAccess.repositories;
 using Agenda.Presentation.Controllers;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using Agenda.BusinessLogic.dtos;
+using Agenda.BusinessLogic.validators;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddFluentValidation(config =>
+{
+    config.RegisterValidatorsFromAssembly(typeof(Program).Assembly);
+    config.ConfigureClientsideValidation(enabled: false);
+});
+
+builder.Services.AddScoped<IValidator<ContactCreationDto>, CreateContactDtoValidator>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

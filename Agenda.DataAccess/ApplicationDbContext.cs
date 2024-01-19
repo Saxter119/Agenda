@@ -27,6 +27,7 @@ namespace Agenda.Presentation.Controllers
                 .WithOne(e => e.Contact)
                 .HasForeignKey("usuarioId")
                 .IsRequired();
+
         }
     }
 }

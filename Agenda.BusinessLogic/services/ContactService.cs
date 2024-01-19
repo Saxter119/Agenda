@@ -82,8 +82,6 @@ namespace Agenda.BusinessLogic.services
                     Emails = mapper.Map<List<EmailDto>>(contact.Emails)
                 });
 
-
-
             }
 
             return contactsDto;
@@ -169,7 +167,7 @@ namespace Agenda.BusinessLogic.services
 
 
             }
-            catch (Exception es)
+            catch (Exception )
             {
 
                 throw;
@@ -182,7 +180,7 @@ namespace Agenda.BusinessLogic.services
         {
             var contact = await contactRepository.GetById(id);
 
-            contact.Deleted = true;
+            contact.Deleted = "true";
 
             await contactRepository.SaveChangesAsync();
         }

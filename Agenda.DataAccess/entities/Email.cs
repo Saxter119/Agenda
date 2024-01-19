@@ -19,7 +19,6 @@ namespace Agenda.DataAccess.entities
         [Column("correo")]
         public string EmailAddress { get; set; }
         public virtual Contact Contact { get; set; }
-        //[Column("personaId")]
-        //public int ContactId { get; set; }
+        
     }
 }
