@@ -5,7 +5,7 @@ CREATE TABLE Contactos
 	apellido NVARCHAR(100) NULL,
 	cedula NVARCHAR(13) NULL,
 	direccion NVARCHAR(255) NULL,
-	eliminado BIT NUll
+	eliminado char NUll
 );
 
 CREATE TABLE Telefonos(
